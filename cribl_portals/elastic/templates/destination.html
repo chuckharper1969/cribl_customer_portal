@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+    <div class="card-header">
+      {{ destination.title }}
+    </div>
+    <div class="card-body">
+      <p class="card-text">
+        <strong>Description: </strong>{{ destination.description }}</p>
+        
+        <p class="card-text">
+        <strong>Username: </strong>{{ destination.username }}
+        </p>
+        
+        <p class="card-text">
+        <strong>Password: </strong>{{ destination.password }}</p>
+        
+        <p class="card-text">
+        <strong>URL: </strong>{{ destination.url }}</p>
+        
+        <p class="card-text">
+        <strong>Message: </strong>{{ destination.message }}</p>
+        
+        <p class="card-text">
+        <strong>Status: </strong>{{ destination.status }}</p>
+        
+        <p class="card-text">
+        <strong>Create At: </strong>{{ destination.created_at }}</p>
+        
+        <p class="card-text">
+        <strong>ID: </strong>{{ destination.id }}</p>
+    </div>
+  </div>
+
+  <br/>
+  <a href="{% url 'elastic_home' %}" class="btn btn-secondary">Back</a>
+  <a href="{% url 'elastic_update' destination.id %}" class="btn btn-warning">Update</a>
+  {% if destination.status != 2 %}
+    <a href="{% url 'elastic_status' destination.id 2 %}" class="btn btn-warning">Disable</a>
+  {% else %}
+    <a href="{% url 'elastic_status' destination.id 0 %}" class="btn btn-warning">Enable</a>
+  {% endif %}
+  <a href="{% url 'elastic_delete' destination.id %}" class="btn btn-danger">Delete</a>
+
+{% endblock %}
