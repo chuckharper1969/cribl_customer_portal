@@ -2,6 +2,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.getData),
-    path('add', views.add_cluster),
+    path('elastic/get/', views.elastic_get),
+    path('elastic/update/<int:pk>', views.elastic_update),
 ]
